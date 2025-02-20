@@ -1,14 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Manager</title>
-</head>
-<body>
-    <h1>Welcome to the Task Manager</h1>
-<p>Let's Create a task</p>
-<a href="/tasks/create">Create Task</a>
+    <style>
+        /* Light Background with Soft Gradient */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(45deg, #fdfbfb, #ebedee);
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
 
+        /* Doodle Elements */
+        .doodle {
+            position: absolute;
+            width: 75px;
+            height: 75px;
+            opacity: 0.3;
+        }
+
+        .doodle1 {
+            top: 10%;
+            left: 5%;
+        }
+
+        .doodle2 {
+            top: 20%;
+            right: 10%;
+        }
+
+        .doodle3 {
+            bottom: 15%;
+            left: 20%;
+        }
+
+        .doodle4 {
+            bottom: 10%;
+            right: 25%;
+        }
+
+        .doodle5 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #ff4081;
+            /* Bright Pink */
+            text-shadow: 2px 2px 10px rgba(255, 64, 129, 0.3);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #ff4081;
+            /* Bright Pink */
+            opacity: 0.9;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 1.5rem;
+            padding: 12px 24px;
+            color: white;
+            background: #ff4081;
+            /* Bright Pink */
+            border-radius: 50px;
+            box-shadow: 0px 10px 20px rgba(255, 64, 129, 0.4);
+            transition: all 0.3s ease-in-out;
+            display: inline-block;
+            margin-top: 20px;
+            position: relative;
+            animation: bounce 2s infinite;
+        }
+
+        a:hover {
+            background: #e91e63;
+            box-shadow: 0px 10px 20px rgba(233, 30, 99, 0.5);
+            transform: translateY(-5px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>✨ Welcome to the Task Manager ✨</h1>
+    <p>Let's create a task and boost your productivity!</p>
+    <a href="/tasks/create">🚀 Create Task</a>
+
+    <!-- Doodle Elements (SVGs for a playful feel) -->
+    <img src="https://thumbs.dreamstime.com/b/completed-15751866.jpg" class="doodle doodle1">
+    <img src="https://www.shutterstock.com/image-photo/tasks-word-on-wooden-cubes-260nw-1904598853.jpg"
+        class="doodle doodle2">
+    <img src="https://i.pinimg.com/736x/a4/8a/46/a48a460ea838d7f3bba5a30c00bb5041.jpg" class="doodle doodle3">
+    <img src="https://media.istockphoto.com/id/1303877287/vector/paper-checklist-and-pencil-flat-pictogram.jpg?s=612x612&w=0&k=20&c=NoqPzn94VH2Pm7epxF8P5rCcScMEAiGQ8Hv_b2ZwRjY="
+        class="doodle doodle4">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ3ixzlz3v6Ah1UffFzFcKeqQghiqy3Cv4Uw&s"
+        class="doodle doodle5">
 </body>
+
 </html>

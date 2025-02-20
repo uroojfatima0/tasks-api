@@ -1,5 +1,5 @@
-import { 
-    Controller, Get, Post, Put, Delete, Param, Body, Render, Redirect, Req, Res 
+import {
+    Controller, Get, Post, Put, Delete, Param, Body, Render, Redirect, Req, Res
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { Task } from './task.model';
@@ -9,7 +9,7 @@ import { Request, Response } from 'express';
 @ApiTags('tasks')
 @Controller('tasks')
 export class TasksController {
-    constructor(private readonly tasksService: TasksService) {}
+    constructor(private readonly tasksService: TasksService) { }
 
     // ✅ UI Route (Excluded from Swagger)
     @Get('create')
@@ -18,6 +18,7 @@ export class TasksController {
     createTaskForm() {
         return {};
     }
+    @Redirect('/tasks/list')
 
     // ✅ API Route - Create Task
     @Post('create')
@@ -53,6 +54,15 @@ export class TasksController {
         return this.tasksService.getTaskById(id);
     }
 
+    // ✅ UI Route - Get Task by ID and Render Task Details Page
+    @Get('view/:id')
+    @Render('task-detail')  // Render 'task-details' template
+    async getTaskByIdUI(@Param('id') id: string): Promise<{ task: Task }> {
+        const task = await this.tasksService.getTaskById(id);
+        return { task };  // Pass task data to the template
+    }
+
+
     // ✅ UI Route (Excluded from Swagger)
     @Get('edit/:id')
     @Render('task-edit')
@@ -73,7 +83,7 @@ export class TasksController {
 
     // ✅ UI Route (Excluded from Swagger)
     @Post('edit/:id')
-    @Redirect('/tasks')
+    @Redirect('/tasks/list')
     @ApiExcludeEndpoint()
     async updateTaskUI(@Param('id') id: string, @Body() body) {
         await this.tasksService.updateTask(id, body.title, body.description, body.completed);
