@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tasks List</title>
+</head>
+<body>
+    <h1>Tasks</h1>
+    <a href="/tasks/create">Create Task</a>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Completed</th>
+            <th>Actions</th>
+        </tr>
+        <% tasks.forEach(task => { %>
+        <tr>
+            <td><%= task.title %></td>
+            <td><%= task.description %></td>
+            <td><%= task.completed ? "✅" : "❌" %></td>
+            <td>
+                <a href="/tasks/edit/<%= task.id %>">Edit</a> | 
+                <a href="/tasks/delete/<%= task.id %>" onclick="return confirm('Are you sure?');">Delete</a>
+            </td>
+        </tr>
+        <% }); %>
+    </table>
+</body>
+</html>
